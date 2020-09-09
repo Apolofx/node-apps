@@ -1,0 +1,11 @@
+const fs = require("fs");
+const dataBuffer = fs.readFileSync("./1-json.json");
+const dataJSON = dataBuffer.toString();
+console.log(dataJSON);
+const data = JSON.parse(dataJSON);
+console.log(data);
+data.name = "nacho";
+data.age = 27;
+const newDataToJSON = JSON.stringify(data);
+console.log(newDataToJSON);
+fs.writeFileSync("./1-json.json", newDataToJSON);
