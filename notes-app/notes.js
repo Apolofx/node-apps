@@ -5,7 +5,6 @@ const { array } = require("yargs");
 const getNotes = () => {
   return "your notes...";
 };
-
 const addNote = (title, body) => {
   const notes = loadNotes();
   const noteDuplicate = notes.find((note) => note.title === title);

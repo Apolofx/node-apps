@@ -58,3 +58,39 @@ yargs.command({
   handler: (argv) => {}, //(function), takes argv as argument and defines what is supposed to do the command itself
 });
 ```
+
+With YARGS `argv` parameter, we access to Node's process.argv array where the command line arguments vector is located. Therefore, if we have to access to an argument value, we use `argv.<argument_name>`.
+Thats how we handle commands within handler functions, just passing argv as the handler's parameter.
+
+## Debugging
+
+- **`console.log()`**
+- Node debugger:
+  For this we add the keyword `debugger` in the line of code we want to inspect, and run the file with `node` command followed by the `inspect` command.
+  Example: `node inspect file.js`
+  We now can access to Chrome's debugger at chrome://inspect to debug our app.
+
+## Node's FileSystem module
+
+### `fs.readFileSync('path')`
+
+Takes a path as the argument and returns a buffer (chain of bytes).
+Then we can access to its content with `toString()` method.
+
+### `fs.writeFileSync('fileName',data)`
+
+Takes file name and the data that needs to be saved in it.
+
+Example:
+
+```javascript
+//readFileSync
+const dataBuffer = fs.readFileSync("/my/path");
+const dataString = dataBuffer.toString();
+//if data is JSON
+const dataToJSON = JSON.parse(dataString);
+
+//writeFileSync
+const data = "Hi i am a new file created with writeFileSync() function";
+fs.writeFileSync("fileName", data);
+```
