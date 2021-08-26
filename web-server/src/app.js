@@ -10,6 +10,29 @@ const public = path.join(__dirname, '../public')
 
 app.use(express.static(public))
 
+app.set('view engine', 'hbs')
+
+app.get('', (req,res) => {
+  res.render('index', {
+    client: 'Pepe',
+    debt: '$150'
+  })
+})
+
+app.get('/about', (req,res) => {
+  res.render('about', {
+    client: 'Pepe',
+    debt: '$150'
+  })
+})
+
+app.get('/help', (req,res) => {
+  res.render('help', {
+    client: 'Pepe',
+    debt: '$150'
+  })
+})
+
 app.get("/weather", (req, res) => {
   res.send({
     forecast: 'it is snowing',
