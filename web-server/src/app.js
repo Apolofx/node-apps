@@ -1,24 +1,20 @@
+const path = require('path')
 const express = require("express");
 
 const app = express();
 
-app.get("", (req, res) => {
-  res.send("Hey there");
-});
+// here we setup a public directory
+// Any files placed there will be served
+// and available from the server's root
+const public = path.join(__dirname, '../public')
 
-app.get("/help", (req, res) => {
-  res.send({
-    name: "nacho",
-    edad: 28,
-  });
-});
-
-app.get("/about", (req, res) => {
-  res.send("About");
-});
+app.use(express.static(public))
 
 app.get("/weather", (req, res) => {
-  res.send("<h1>Weather</h1>");
+  res.send({
+    forecast: 'it is snowing',
+    location: "casare"
+  });
 });
 
 app.get("*", (req, res) => {
